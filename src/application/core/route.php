@@ -3,7 +3,7 @@
 class Route {
 
 	static function addlog($str) {
-		$tempdir = 'c:\web\www\BankSystemApi.local'; // если есть такой каталог
+		//$tempdir = 'c:\prog\docker\MotorbikeForum\src'; // если есть такой каталог
 		if (!file_exists($tempdir)) // иначе
 			$tempdir = sys_get_temp_dir(); // системный - c:\windows\temp
 		$logfile = $tempdir .'\!log.txt';
@@ -19,6 +19,7 @@ class Route {
 	 * @throws Exception
 	 */
 	static function start() {
+		Route::addlog('+++');
 		// контроллер и действие по умолчанию
 		$controller_name = 'Main';
 		$action_name = 'index';
