@@ -3,9 +3,10 @@
 class Route {
 
 	static function addlog($str) {
-		$tempdir = 'c:\prog\docker\MotorbikeForum\src'; // если есть такой каталог
-		if (!file_exists($tempdir)) // иначе
-			$tempdir = sys_get_temp_dir(); // системный - c:\windows\temp
+		//$tempdir = 'c:\prog\docker\MotorbikeForum\src'; // если есть такой каталог
+		$tempdir = '';
+		//if (!file_exists($tempdir)) // иначе
+		//	$tempdir = sys_get_temp_dir(); // системный - c:\windows\temp
 		$logfile = $tempdir .'\!log.txt';
 		$fd = fopen($logfile, 'a+');
 		if ($fd) {
