@@ -17,6 +17,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       allowPublicKeyRetrieval: true
+      TZ: 'Europe/Moscow'
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
