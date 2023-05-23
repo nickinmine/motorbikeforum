@@ -1,14 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Апр 20 2023 г., 00:00
--- Версия сервера: 8.0.11
--- Версия PHP: 7.4.28
+-- Хост: db
+-- Время создания: Май 23 2023 г., 11:11
+-- Версия сервера: 8.0.30
+-- Версия PHP: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+START TRANSACTION;
+SET time_zone = "+03:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -29,7 +30,7 @@ USE `motorbike_base`;
 --
 
 CREATE TABLE `album` (
-  `album_id` int(11) NOT NULL,
+  `album_id` int NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -40,9 +41,9 @@ CREATE TABLE `album` (
 --
 
 CREATE TABLE `album_image` (
-  `album_id` int(11) NOT NULL,
-  `image_id` int(11) NOT NULL,
-  `id` int(11) NOT NULL
+  `album_id` int NOT NULL,
+  `image_id` int NOT NULL,
+  `id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -63,8 +64,8 @@ CREATE TABLE `ban_list` (
 --
 
 CREATE TABLE `comment` (
-  `comment_id` int(11) NOT NULL,
-  `thread_id` int(11) NOT NULL,
+  `comment_id` int NOT NULL,
+  `thread_id` int NOT NULL,
   `content` text NOT NULL,
   `user_uuid` varchar(36) NOT NULL,
   `publish_date` datetime NOT NULL
@@ -78,8 +79,8 @@ CREATE TABLE `comment` (
 
 CREATE TABLE `comment_chosen` (
   `user_uuid` varchar(36) NOT NULL,
-  `comment_id` int(11) NOT NULL,
-  `id` int(11) NOT NULL
+  `comment_id` int NOT NULL,
+  `id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -89,7 +90,7 @@ CREATE TABLE `comment_chosen` (
 --
 
 CREATE TABLE `image` (
-  `image_id` int(11) NOT NULL,
+  `image_id` int NOT NULL,
   `image_uri` varchar(100) NOT NULL,
   `min_uri` varchar(100) NOT NULL,
   `user_uuid` varchar(36) NOT NULL
@@ -99,8 +100,7 @@ CREATE TABLE `image` (
 -- Дамп данных таблицы `image`
 --
 
-INSERT INTO `image` (`image_id`, `image_uri`, `min_uri`, `user_uuid`) VALUES
-(1, 'https://i.ibb.co/rMTTNFN/1570955019-32-1.jpg', 'https://i.ibb.co/6bVVLrL/1570955019-32-1.jpg', '34a6775c-dee6-11ed-b95c-02503e34a03e');
+INSERT INTO `image` (`image_id`, `image_uri`, `min_uri`, `user_uuid`) VALUES(1, 'https://i.ibb.co/rMTTNFN/1570955019-32-1.jpg', 'https://i.ibb.co/6bVVLrL/1570955019-32-1.jpg', '34a6775c-dee6-11ed-b95c-02503e34a03e');
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,7 @@ INSERT INTO `image` (`image_id`, `image_uri`, `min_uri`, `user_uuid`) VALUES
 --
 
 CREATE TABLE `notification` (
-  `notification_id` int(11) NOT NULL,
+  `notification_id` int NOT NULL,
   `user_uuid` varchar(36) NOT NULL,
   `notification_type` varchar(50) NOT NULL,
   `get_date` datetime NOT NULL,
@@ -132,32 +132,13 @@ CREATE TABLE `notification_type` (
 -- Дамп данных таблицы `notification_type`
 --
 
-INSERT INTO `notification_type` (`notification_type`, `description`) VALUES
-('ban', 'Блокировка администратором'),
-('comment_answer', 'Ответ на Ваш комментарий'),
-('comment_delete', 'Ваш комментарий удалён администратором'),
-('news_accept', 'Ваша новость опубликована администратором'),
-('news_reject', 'Ваша новость отклонена администратором'),
-('theme_answer', 'Ответ в Вашей теме'),
-('theme_delete', 'Ваша тема удалена администратором');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `reg_data`
---
-
-CREATE TABLE `reg_data` (
-  `user_uuid` varchar(36) NOT NULL,
-  `password` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `reg_data`
---
-
-INSERT INTO `reg_data` (`user_uuid`, `password`) VALUES
-('34a6775c-dee6-11ed-b95c-02503e34a03e', '63a9f0ea7bb98050796b649e85481845');
+INSERT INTO `notification_type` (`notification_type`, `description`) VALUES('ban', 'Блокировка администратором');
+INSERT INTO `notification_type` (`notification_type`, `description`) VALUES('comment_answer', 'Ответ на Ваш комментарий');
+INSERT INTO `notification_type` (`notification_type`, `description`) VALUES('comment_delete', 'Ваш комментарий удалён администратором');
+INSERT INTO `notification_type` (`notification_type`, `description`) VALUES('news_accept', 'Ваша новость опубликована администратором');
+INSERT INTO `notification_type` (`notification_type`, `description`) VALUES('news_reject', 'Ваша новость отклонена администратором');
+INSERT INTO `notification_type` (`notification_type`, `description`) VALUES('theme_answer', 'Ответ в Вашей теме');
+INSERT INTO `notification_type` (`notification_type`, `description`) VALUES('theme_delete', 'Ваша тема удалена администратором');
 
 -- --------------------------------------------------------
 
@@ -174,9 +155,8 @@ CREATE TABLE `role` (
 -- Дамп данных таблицы `role`
 --
 
-INSERT INTO `role` (`role`, `description`) VALUES
-('admin', 'Администратор'),
-('user', 'Пользователь');
+INSERT INTO `role` (`role`, `description`) VALUES('admin', 'Администратор');
+INSERT INTO `role` (`role`, `description`) VALUES('user', 'Пользователь');
 
 -- --------------------------------------------------------
 
@@ -193,18 +173,17 @@ CREATE TABLE `tag` (
 -- Дамп данных таблицы `tag`
 --
 
-INSERT INTO `tag` (`tag`, `description`) VALUES
-('ad', 'Реклама'),
-('contacts', 'Знакомства'),
-('dtp', 'ДТП'),
-('equipment', 'Экипировка'),
-('job', 'Работа'),
-('movement', 'Приёмы управления'),
-('other', 'Разное'),
-('sport', 'Спорт'),
-('stories', 'Истории'),
-('technique', 'Техника'),
-('trips', 'Путешествия');
+INSERT INTO `tag` (`tag`, `description`) VALUES('ad', 'Реклама');
+INSERT INTO `tag` (`tag`, `description`) VALUES('contacts', 'Знакомства');
+INSERT INTO `tag` (`tag`, `description`) VALUES('dtp', 'ДТП');
+INSERT INTO `tag` (`tag`, `description`) VALUES('equipment', 'Экипировка');
+INSERT INTO `tag` (`tag`, `description`) VALUES('job', 'Работа');
+INSERT INTO `tag` (`tag`, `description`) VALUES('movement', 'Приёмы управления');
+INSERT INTO `tag` (`tag`, `description`) VALUES('other', 'Разное');
+INSERT INTO `tag` (`tag`, `description`) VALUES('sport', 'Спорт');
+INSERT INTO `tag` (`tag`, `description`) VALUES('stories', 'Истории');
+INSERT INTO `tag` (`tag`, `description`) VALUES('technique', 'Техника');
+INSERT INTO `tag` (`tag`, `description`) VALUES('trips', 'Путешествия');
 
 -- --------------------------------------------------------
 
@@ -213,13 +192,13 @@ INSERT INTO `tag` (`tag`, `description`) VALUES
 --
 
 CREATE TABLE `thread` (
-  `thread_id` int(11) NOT NULL,
+  `thread_id` int NOT NULL,
   `user_uuid` varchar(36) NOT NULL,
   `header` text NOT NULL,
   `content` text NOT NULL,
   `publish_date` datetime DEFAULT NULL,
   `is_news` blob,
-  `view_num` int(11) NOT NULL,
+  `view_num` int NOT NULL,
   `tag` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -231,8 +210,8 @@ CREATE TABLE `thread` (
 
 CREATE TABLE `thread_chosen` (
   `user_uuid` varchar(36) NOT NULL,
-  `thread_id` int(11) NOT NULL,
-  `id` int(11) NOT NULL
+  `thread_id` int NOT NULL,
+  `id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -242,7 +221,9 @@ CREATE TABLE `thread_chosen` (
 --
 
 CREATE TABLE `token` (
+  `user_uuid` varchar(36) NOT NULL,
   `token` varchar(32) NOT NULL,
+  `ipv4` varchar(15) DEFAULT NULL,
   `expires_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -256,11 +237,12 @@ CREATE TABLE `user` (
   `user_uuid` varchar(36) NOT NULL,
   `name` varchar(20) NOT NULL,
   `nickname` varchar(20) NOT NULL,
-  `experience` int(11) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `experience` int NOT NULL,
   `reg_date` date NOT NULL,
   `role` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `avatar_id` int(11) NOT NULL,
+  `avatar_id` int NOT NULL,
   `motorbike` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -268,8 +250,7 @@ CREATE TABLE `user` (
 -- Дамп данных таблицы `user`
 --
 
-INSERT INTO `user` (`user_uuid`, `name`, `nickname`, `experience`, `reg_date`, `role`, `email`, `avatar_id`, `motorbike`) VALUES
-('34a6775c-dee6-11ed-b95c-02503e34a03e', 'root', 'root', 0, '2023-04-19', 'admin', 'noemail@emaila.net', 1, NULL);
+INSERT INTO `user` (`user_uuid`, `name`, `nickname`, `password`, `experience`, `reg_date`, `role`, `email`, `avatar_id`, `motorbike`) VALUES('34a6775c-dee6-11ed-b95c-02503e34a03e', 'root', 'root', 'pass', 0, '2023-04-19', 'admin', 'noemail@emaila.net', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -343,12 +324,6 @@ ALTER TABLE `notification_type`
   ADD PRIMARY KEY (`notification_type`);
 
 --
--- Индексы таблицы `reg_data`
---
-ALTER TABLE `reg_data`
-  ADD PRIMARY KEY (`user_uuid`);
-
---
 -- Индексы таблицы `role`
 --
 ALTER TABLE `role`
@@ -380,7 +355,7 @@ ALTER TABLE `thread_chosen`
 -- Индексы таблицы `token`
 --
 ALTER TABLE `token`
-  ADD PRIMARY KEY (`token`);
+  ADD PRIMARY KEY (`user_uuid`);
 
 --
 -- Индексы таблицы `user`
@@ -406,49 +381,49 @@ ALTER TABLE `wait_list`
 -- AUTO_INCREMENT для таблицы `album`
 --
 ALTER TABLE `album`
-  MODIFY `album_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `album_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `album_image`
 --
 ALTER TABLE `album_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `comment_chosen`
 --
 ALTER TABLE `comment_chosen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `image`
 --
 ALTER TABLE `image`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `notification_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `thread`
 --
 ALTER TABLE `thread`
-  MODIFY `thread_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `thread_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `thread_chosen`
 --
 ALTER TABLE `thread_chosen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -495,12 +470,6 @@ ALTER TABLE `notification`
   ADD CONSTRAINT `notification_ibfk_2` FOREIGN KEY (`notification_type`) REFERENCES `notification_type` (`notification_type`);
 
 --
--- Ограничения внешнего ключа таблицы `reg_data`
---
-ALTER TABLE `reg_data`
-  ADD CONSTRAINT `reg_data_ibfk_1` FOREIGN KEY (`user_uuid`) REFERENCES `user` (`user_uuid`);
-
---
 -- Ограничения внешнего ключа таблицы `thread`
 --
 ALTER TABLE `thread`
@@ -515,6 +484,12 @@ ALTER TABLE `thread_chosen`
   ADD CONSTRAINT `thread_chosen_ibfk_2` FOREIGN KEY (`thread_id`) REFERENCES `thread` (`thread_id`);
 
 --
+-- Ограничения внешнего ключа таблицы `token`
+--
+ALTER TABLE `token`
+  ADD CONSTRAINT `token_ibfk_1` FOREIGN KEY (`user_uuid`) REFERENCES `user` (`user_uuid`);
+
+--
 -- Ограничения внешнего ключа таблицы `user`
 --
 ALTER TABLE `user`
@@ -526,6 +501,7 @@ ALTER TABLE `user`
 --
 ALTER TABLE `wait_list`
   ADD CONSTRAINT `wait_list_ibfk_1` FOREIGN KEY (`user_uuid`) REFERENCES `user` (`user_uuid`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
