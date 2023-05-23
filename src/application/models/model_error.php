@@ -43,6 +43,7 @@ class Model_Error extends Model {
 			);
 		}
 		else {
+			http_response_code(400);
 			return array(
 				'code' => 400,
 				'response' => 'Bad Request: ' . $code

@@ -5,7 +5,7 @@ class Session {
 	private static $pdo = null;
 
 	public static function get_sql_connection() {
-		$dsn = "mysql:host=mysql;port=3306;dbname=testdb";
+		$dsn = "mysql:host=mysql;port=3306;dbname=motorbike_base";
 		$opt = [
 			PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
