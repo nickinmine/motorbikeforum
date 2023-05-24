@@ -7,7 +7,7 @@ class Route {
 		$tempdir = '';
 		//if (!file_exists($tempdir)) // иначе
 		//	$tempdir = sys_get_temp_dir(); // системный - c:\windows\temp
-		$logfile = $tempdir .'\!log.txt';
+		$logfile = $tempdir .'!log.txt';
 		$fd = fopen($logfile, 'a+');
 		if ($fd) {
 			date_default_timezone_set("Europe/Moscow");
@@ -26,9 +26,9 @@ class Route {
 
 		$url = explode('?', $_SERVER['REQUEST_URI']);
 		$routes = explode('/', $url[0]);
-
+		
 		// получаем имя контроллера (первый параметр)
-		if (!empty($routes[1])) {
+		if (!empty($routes[1])) {   	
 			$controller_name = $routes[1];
 		}
 
@@ -69,11 +69,11 @@ class Route {
 			// контроллер не найден
 			throw new LogicException(404);
 		}
-
+		
 		// создаем контроллер
 		$controller = new $controller_name;
 		$action = $action_name;
-
+		
 		if (method_exists($controller, $action)) {
 			// вызываем действие контроллера
 			$controller->$action();
@@ -82,7 +82,7 @@ class Route {
 			// экшен не найден
 			throw new LogicException(404);
 		}
-
+	
 	}
 }
 

@@ -2,7 +2,7 @@
 
 class Model {
 
-	public function get_data($message) {}
+	public function get_data($message = null) {}
 }
 
 ?>

@@ -5,7 +5,7 @@ class Model_Main extends Model {
 	/**
 	 * @throws exception
 	 */
-	public function get_data($message) {
+	public function get_data($message = null) {
 		$pdo = Session::get_sql_connection();
 		$data = array(
 			'code' => 200,
