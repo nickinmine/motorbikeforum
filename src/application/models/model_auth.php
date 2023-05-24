@@ -30,9 +30,7 @@ class Model_Auth extends Model {
 		$stmt = $pdo->prepare("DELETE FROM token WHERE user_uuid = :user_uuid");
 		$stmt->execute(array('user_uuid' => $user['user_uuid']));
 		// Генерация и добавление нового токена, его длительность 7 дней
-		Route::addlog('++');
 		$token = bin2hex(random_bytes(16));
-		Route::addlog($token);
 		$stmt = $pdo->prepare("INSERT INTO token (user_uuid, token, ipv4, expires_on) 
 			VALUES (:user_uuid, :token, :ipv4, DATE_ADD(NOW(), INTERVAL 7 DAY))");
 		$stmt->execute(array(
