@@ -27,18 +27,18 @@ class Session {
 		}
 	}
 
-	public static function request_uri() {
-		return $_SERVER['REQUEST_URI'];
-	}
-
 	/**
 	 * Проверка авторизации по токену
 	 * @throws Exception
 	 */
 	public static function auth($token) {
 		$pdo = self::get_sql_connection();
-		$stmt = $pdo->prepare("SELECT user_uuid, expires_on FROM token WHERE token = :token");
-		$stmt->execute(array('token' => $token));
+		$stmt = $pdo->prepare("SELECT user_uuid FROM token 
+			WHERE token = :token AND ipv4 = :ipv4 AND expires_on > NOW()");
+		$stmt->execute(array(
+			'token' => $token,
+			'ipv4' => $_SERVER['REMOTE_ADDR']
+		));
 		$user = $stmt->fetchAll();
 		if (count($user) == 0) {
 			throw new LogicException(403);

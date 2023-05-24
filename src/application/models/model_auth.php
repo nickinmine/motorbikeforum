@@ -26,9 +26,7 @@ class Model_Auth extends Model {
 		if ($user['password'] == null || $password != $user['password']) {
 			throw new LogicException('Неверный логин или пароль');
 		}
-		// Удаление старого токена, если он есть
-		$stmt = $pdo->prepare("DELETE FROM token WHERE user_uuid = :user_uuid");
-		$stmt->execute(array('user_uuid' => $user['user_uuid']));
+
 		// Генерация и добавление нового токена, его длительность 7 дней
 		$token = bin2hex(random_bytes(16));
 		$stmt = $pdo->prepare("INSERT INTO token (user_uuid, token, ipv4, expires_on) 
@@ -36,7 +34,8 @@ class Model_Auth extends Model {
 		$stmt->execute(array(
 			'user_uuid' => $user['user_uuid'],
 			'ipv4' => $_SERVER['REMOTE_ADDR'],
-			'token' => $token));
+			'token' => $token
+		));
 		return $token;
 	}
 
