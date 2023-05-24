@@ -112,4 +112,33 @@ class Controller_Auth extends Controller {
 		return null;
 	}
 
+	/**
+	 * @OA\Post(
+	 *   path="/auth/signout",
+	 *   tags={"auth"},
+	 *   summary="Выход",
+	 *   operationId="auth_signout",
+	 *   description="Функционал в виде ссылки, позволяющий пользователю выйти из аккаунта.",
+	 *
+	 *   @OA\Response(
+	 *      response=200,
+	 *      description="Success",
+	 *      @OA\MediaType(
+	 *           mediaType="application/json",
+	 *      )
+	 *   )
+	 *)
+	 *
+	 * @return null
+	 * @throws Exception
+	 */
+	function action_signout() {
+		Session::safe_session_start();
+		unset($_SESSION);
+		$this->model->signout($_COOKIE['token']);
+		setcookie('token', '', 1, '/');
+		header('Location: /auth');
+		return null;
+	}
+
 }

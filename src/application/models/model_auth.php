@@ -40,4 +40,15 @@ class Model_Auth extends Model {
 		return $token;
 	}
 
+	/**
+	 * Выход пользователя из системы
+	 * @throws exception
+	 */
+	public function signout($token) {
+		$pdo = Session::get_sql_connection();
+		$stmt = $pdo->prepare("DELETE FROM token WHERE token = :token");
+		$stmt->execute(array('token' => $token));
+		return null;
+	}
+
 }
