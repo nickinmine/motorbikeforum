@@ -46,7 +46,7 @@ class Controller_Auth extends Controller {
 		else {
 			throw new Exception(405);
 		}
-		$this->view->generate('', 'view_auth.php', $data);
+		$this->view->generate('view_auth.php', $data);
 		return null;
 	}
 
