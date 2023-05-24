@@ -18,18 +18,26 @@ class Model_Auth extends Model {
 	public function signin($login, $password) {
 		$pdo = Session::get_sql_connection();
 
+        // TODO: Возможно стоит добавить проверку наличия действующего токена при попытке аутентификации пользователя
+
 		// Поиск пользователя с нужным логином и паролем
 		$stmt = $pdo->prepare("SELECT user_uuid, password FROM user WHERE nickname = :login");
 		$stmt->execute(array('login' => $login));
 		$user = $stmt->fetch();
 
 		// Проверка пароля на правильность
-		// TODO: Рехеширование добавить
-		$password = password_hash($password, PASSWORD_BCRYPT);
-		if ($user['password'] == null || !(password_verify($password, $user['password']))) {
-			Route::addlog(password_hash($password, PASSWORD_BCRYPT));
-			throw new LogicException('Неверный логин или пароль');
-		}
+        if ($user['password'] == null || !(password_verify($password, $user['password']))) {
+            throw new LogicException('Неверный логин или пароль');
+        }
+        if (password_needs_rehash($user['password'], PASSWORD_DEFAULT)) {
+            Route::addlog('rehash');
+            $newHash = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $pdo->prepare('UPDATE user SET password = :password WHERE user_uuid = :user_uuid');
+            $stmt->execute(array(
+                'password' => $newHash,
+                'user_uuid' => $user['user_uuid'],
+            ));
+        }
 
 		// Генерация и добавление нового токена, его длительность 7 дней
 		$token = bin2hex(random_bytes(16));

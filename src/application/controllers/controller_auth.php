@@ -99,7 +99,7 @@ class Controller_Auth extends Controller {
 			try {
 				$token = $this->model->signin($_POST['login'], $_POST['password']);
 				// Кладем в куки токен пользователя, время жизни 7 дней
-				setcookie('token', $token, time() + 60*60*24*7, '/; samesite=strict', ['httponly' => true, 'samesite' => 'Strict']);
+				setcookie('token', $token, time() + 60*60*24*7, '/');
 				header('Location: /');
 			}
 			catch (LogicException $exception) {

@@ -250,7 +250,7 @@ CREATE TABLE `user` (
 -- Дамп данных таблицы `user`
 --
 
-INSERT INTO `user` (`user_uuid`, `name`, `nickname`, `password`, `experience`, `reg_date`, `role`, `email`, `avatar_id`, `motorbike`) VALUES('34a6775c-dee6-11ed-b95c-02503e34a03e', 'root', 'root', 'pass', 0, '2023-04-19', 'admin', 'noemail@emaila.net', 1, NULL);
+INSERT INTO `user` (`user_uuid`, `name`, `nickname`, `password`, `experience`, `reg_date`, `role`, `email`, `avatar_id`, `motorbike`) VALUES('34a6775c-dee6-11ed-b95c-02503e34a03e', 'root', 'root', '$2y$10$MF35NaHQ6.B/.bWV1OXXSe7HvEYvmmE.UW8Qm3mnwIe/gknDFX.TW', 0, '2023-04-19', 'admin', 'noemail@emaila.net', 1, NULL);
 
 -- --------------------------------------------------------
 
