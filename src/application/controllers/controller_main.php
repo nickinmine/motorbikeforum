@@ -28,8 +28,15 @@ class Controller_Main extends Controller {
 	 * @throws Exception
 	 */
 	public function action_index() {
-		$data = $this->model->get_data();
-		$this->view->generate('view.php', $data);
+		Session::safe_session_start();
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$data = $this->model->get_data('hello world');
+			unset($_SESSION['mbforum']['message']);
+		}
+		else {
+			throw new Exception(405);
+		}
+		$this->view->generate('view.php', '', $data);
 		return null;
 	}
 
