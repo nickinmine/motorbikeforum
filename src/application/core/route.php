@@ -20,28 +20,27 @@ class Route {
 	 * @throws Exception
 	 */
 	static function start() {
-		Route::addlog('+++');
 		// контроллер и действие по умолчанию
 		$controller_name = 'Main';
 		$action_name = 'index';
 
 		$url = explode('?', $_SERVER['REQUEST_URI']);
 		$routes = explode('/', $url[0]);
-		
+
 		// получаем имя контроллера (первый параметр)
-		if (!empty($routes[1])) {   	
+		if (!empty($routes[1])) {
 			$controller_name = $routes[1];
 		}
 
 		// получаем один идентификатор для API
-		$id = '';
+		/*$id = '';
 		if (!empty($routes[2])) {
 			$id = $routes[2];
-		}
+		}*/
 
 		// получаем имя экшена (второй параметр)
-		if (!empty($routes[3])) {
-			$action_name = $routes[3];
+		if (!empty($routes[2])) {
+			$action_name = $routes[2];
 		}
 
 		// добавляем префиксы
@@ -70,20 +69,20 @@ class Route {
 			// контроллер не найден
 			throw new LogicException(404);
 		}
-		
+
 		// создаем контроллер
 		$controller = new $controller_name;
 		$action = $action_name;
-		
+
 		if (method_exists($controller, $action)) {
 			// вызываем действие контроллера
-			$controller->$action($id);
+			$controller->$action();
 		}
 		else {
 			// экшен не найден
 			throw new LogicException(404);
 		}
-	
+
 	}
 }
 
