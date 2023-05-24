@@ -36,7 +36,7 @@ class Controller_Main extends Controller {
 		else {
 			throw new Exception(405);
 		}
-		$this->view->generate('view.php', '', $data);
+		$this->view->generate('view.php', $data);
 		return null;
 	}
 
