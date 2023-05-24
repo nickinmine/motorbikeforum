@@ -108,7 +108,9 @@ class Controller_Auth extends Controller {
 				header('Location: /auth');
 			}
 		}
-		else throw new Exception(405);
+		else {
+			throw new Exception(405);
+		}
 		return null;
 	}
 

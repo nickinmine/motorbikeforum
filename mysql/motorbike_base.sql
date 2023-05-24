@@ -355,8 +355,7 @@ ALTER TABLE `thread_chosen`
 -- Индексы таблицы `token`
 --
 ALTER TABLE `token`
-  ADD PRIMARY KEY (`user_uuid`),
-  ADD UNIQUE KEY `Index_6` (`token`);
+  ADD PRIMARY KEY (`token`);
 
 --
 -- Индексы таблицы `user`

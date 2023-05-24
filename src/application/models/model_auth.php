@@ -38,7 +38,8 @@ class Model_Auth extends Model {
 		$stmt->execute(array(
 			'user_uuid' => $user['user_uuid'],
 			'ipv4' => $_SERVER['REMOTE_ADDR'],
-			'token' => $token));
+			'token' => $token
+		));
 		return $token;
 	}
 
