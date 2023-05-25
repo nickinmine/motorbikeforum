@@ -29,8 +29,10 @@ class Model_Reg extends Model {
 			throw new LogicException('Обязательные поля не заполнены');
 		}
 
-		// Добавление пользователя в базу данных
 		$pdo = Session::get_sql_connection();
+		$pdo->beginTransaction();
+
+		// Добавление пользователя в таблицу пользователей
 		$stmt = $pdo->prepare("INSERT INTO user (name, nickname, password, experience, email, motorbike) 
 			VALUES (:name, :nickname, :password, :experience, :email, :motorbike)");
 		$stmt->execute(array(
@@ -41,6 +43,13 @@ class Model_Reg extends Model {
 			'email' => htmlspecialchars($user['email']),
 			'motorbike' => htmlspecialchars($user['motorbike'])
 		));
+
+		// Добавление пользователя в лист ожидания
+		$stmt = $pdo->prepare("INSERT INTO wait_list (user_uuid) VALUES 
+        	(SELECT user_uuid FROM user WHERE nickname = :nickname)");
+		$stmt->execute(array('nickname' => htmlspecialchars($user['nickname'])));
+
+		$pdo->commit();
 	}
 
 }
