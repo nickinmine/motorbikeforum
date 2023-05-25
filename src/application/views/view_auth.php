@@ -1,7 +1,7 @@
 <form action= "/auth/signin" method="POST">
-	<label>Логин</label>
+	<label>Никнейм</label>
 	<label>
-		<input type="text" name="login" placeholder="Введите логин" required>
+		<input type="text" name="login" placeholder="Введите никнейм" required>
 	</label>
 	<label>Пароль</label>
 	<label>

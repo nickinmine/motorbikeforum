@@ -1,15 +1,5 @@
 <?php
 
-/**
- * @OA\Schema(
- *     title="Controller_Auth",
- *     description="Контроллер для взаимодействия со страницей входа",
- *     @OA\Xml(
- *         name="Controller_Auth"
- *     )
- * )
- */
-
 class Controller_Auth extends Controller {
 
 	function __construct() {
@@ -23,7 +13,7 @@ class Controller_Auth extends Controller {
 	 *   tags={"auth"},
 	 *   summary="Страница авторизации",
 	 *   operationId="auth",
-	 *   description="Страница, позволяющая оператору выполнить авторизацию или выйти из аккаунта.",
+	 *   description="Страница, позволяющая пользователю выполнить авторизацию или выйти из аккаунта.",
 	 *
 	 *   @OA\Response(
 	 *      response=200,
@@ -56,7 +46,7 @@ class Controller_Auth extends Controller {
 	 *   tags={"auth"},
 	 *   summary="Вход",
 	 *   operationId="auth_signin",
-	 *   description="Функционал в виде формы, позволяющий сотруднику выполнить авторизацию.",
+	 *   description="Функционал в виде формы, позволяющий пользователю выполнить авторизацию.",
 	 *
 	 *   @OA\Parameter(
 	 *      name="login",
@@ -67,7 +57,7 @@ class Controller_Auth extends Controller {
 	 *      )
 	 *   ),
 	 *   @OA\Parameter(
-	 *      name="pass",
+	 *      name="password",
 	 *      in="query",
 	 *      required=true,
 	 *      @OA\Schema(

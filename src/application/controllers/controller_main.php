@@ -10,7 +10,7 @@ class Controller_Main extends Controller {
 	/**
 	 * @OA\Get(
 	 *   path="/",
-	 *   tags={""},
+	 *   tags={"main"},
 	 *   summary="Главная страница",
 	 *   operationId="auth",
 	 *   description="Страница, позволяющая оператору выполнить авторизацию или выйти из аккаунта.",
