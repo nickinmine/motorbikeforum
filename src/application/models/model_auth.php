@@ -21,9 +21,12 @@ class Model_Auth extends Model {
         // TODO: Возможно стоит добавить проверку наличия действующего токена при попытке аутентификации пользователя
 
 		// Поиск пользователя с нужным логином и паролем
-		$stmt = $pdo->prepare("SELECT user_uuid, password FROM user WHERE nickname = :login");
+		$stmt = $pdo->prepare("SELECT user_uuid, password FROM user u WHERE nickname = :login
+			 AND (SELECT COUNT(*) FROM wait_list w WHERE u.user_uuid = w.user_uuid) IS NOT NULL");
 		$stmt->execute(array('login' => $login));
 		$user = $stmt->fetch();
+
+		$pdo->beginTransaction();
 
 		// Проверка пароля на правильность
         if ($user['password'] == null || !(password_verify($password, $user['password']))) {
@@ -48,6 +51,9 @@ class Model_Auth extends Model {
 			'ipv4' => $_SERVER['REMOTE_ADDR'],
 			'token' => $token
 		));
+
+		$pdo->commit();
+
 		return $token;
 	}
 
