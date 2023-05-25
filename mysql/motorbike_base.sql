@@ -234,15 +234,15 @@ CREATE TABLE `token` (
 --
 
 CREATE TABLE `user` (
-  `user_uuid` varchar(36) NOT NULL,
+  `user_uuid` varchar(36) DEFAULT (UUID()) NOT NULL,
   `name` varchar(20) NOT NULL,
   `nickname` varchar(20) NOT NULL,
   `password` varchar(60) NOT NULL,
   `experience` int NOT NULL,
-  `reg_date` date NOT NULL,
-  `role` varchar(20) NOT NULL,
+  `reg_date` date DEFAULT (CURRENT_DATE()) NOT NULL,
+  `role` varchar(20) DEFAULT 'user' NOT NULL,
   `email` varchar(50) NOT NULL,
-  `avatar_id` int NOT NULL,
+  `avatar_id` int DEFAULT 1 NOT NULL,
   `motorbike` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
