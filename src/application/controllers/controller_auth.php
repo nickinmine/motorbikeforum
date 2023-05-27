@@ -87,6 +87,10 @@ class Controller_Auth extends Controller {
 		Session::safe_session_start();
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			try {
+				// Если пользователь уже был авторизован, то сначала надо выйти
+				if (array_key_exists('token', $_COOKIE)) {
+					$this->action_signout();
+				}
 				$token = $this->model->signin($_POST['login'], $_POST['password']);
 				// Кладем в куки токен пользователя, время жизни 7 дней
 				setcookie('token', $token, time() + 60*60*24*7, '/');

@@ -18,8 +18,6 @@ class Model_Auth extends Model {
 	public function signin($login, $password) {
 		$pdo = Session::get_sql_connection();
 
-        // TODO: Возможно стоит добавить проверку наличия действующего токена при попытке аутентификации пользователя
-
 		// Поиск пользователя с нужным логином и паролем
 		$stmt = $pdo->prepare("SELECT user_uuid, password FROM user u WHERE nickname = :login
 			 AND (SELECT COUNT(*) FROM wait_list w WHERE u.user_uuid = w.user_uuid) IS NOT NULL");
