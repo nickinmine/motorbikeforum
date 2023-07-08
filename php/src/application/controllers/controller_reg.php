@@ -59,7 +59,7 @@ class Controller_Reg extends Controller {
 	 *   description="Функционал в виде формы, позволяющий пользователю выполнить регистрацию.",
 	 *
 	 *   @OA\Parameter(
-	 *      name="login",
+	 *      name="name",
 	 *      in="query",
 	 *      required=true,
 	 *      @OA\Schema(
@@ -67,7 +67,39 @@ class Controller_Reg extends Controller {
 	 *      )
 	 *   ),
 	 *   @OA\Parameter(
-	 *      name="pass",
+	 *      name="nickname",
+	 *      in="query",
+	 *      required=true,
+	 *      @OA\Schema(
+	 *          type="string"
+	 *      )
+	 *   ),
+	 *   @OA\Parameter(
+	 *      name="experience",
+	 *      in="query",
+	 *      required=true,
+	 *      @OA\Schema(
+	 *          type="number"
+	 *      )
+	 *   ),
+	 *   @OA\Parameter(
+	 *      name="email",
+	 *      in="query",
+	 *      required=true,
+	 *      @OA\Schema(
+	 *          type="string"
+	 *      )
+	 *   ),
+	 *   @OA\Parameter(
+	 *      name="motorbike",
+	 *      in="query",
+	 *      required=false,
+	 *      @OA\Schema(
+	 *          type="string"
+	 *      )
+	 *   ),
+	 *   @OA\Parameter(
+	 *      name="password",
 	 *      in="query",
 	 *      required=true,
 	 *      @OA\Schema(
@@ -82,8 +114,8 @@ class Controller_Reg extends Controller {
 	 *      )
 	 *   ),
 	 *   @OA\Response(
-	 *      response=403,
-	 *      description="Wrong login or password",
+	 *      response=400,
+	 *      description="Wrong data format",
 	 *      @OA\MediaType(
 	 *           mediaType="application/json",
 	 *      )

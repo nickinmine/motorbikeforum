@@ -31,12 +31,20 @@ class Session {
 	 * Проверка авторизации по токену
 	 * @throws Exception
 	 */
-	public static function auth($token) {
+	public static function auth($token, $role = null) {
 		$pdo = self::get_sql_connection();
-		$stmt = $pdo->prepare("SELECT user_uuid FROM token 
-			WHERE token = :token AND ipv4 = :ipv4 AND expires_on > NOW()");
+		if ($role) {
+			$query = "SELECT user_uuid FROM token 
+				WHERE token = :token AND role = :role AND ipv4 = :ipv4 AND expires_on > NOW()";
+		}
+		else {
+			$query = "SELECT user_uuid FROM token 
+				WHERE token = :token AND ipv4 = :ipv4 AND expires_on > NOW()";
+		}
+		$stmt = $pdo->prepare($query);
 		$stmt->execute(array(
 			'token' => $token,
+			'role' => $role,
 			'ipv4' => $_SERVER['REMOTE_ADDR']
 		));
 		$user = $stmt->fetchAll();

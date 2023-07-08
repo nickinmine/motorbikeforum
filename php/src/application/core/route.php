@@ -23,7 +23,7 @@ class Route {
 		// контроллер и действие по умолчанию
 		$controller_name = 'Main';
 		$action_name = 'index';
-
+		// Route::addlog($_SERVER['REQUEST_URI']);
 		$url = explode('?', $_SERVER['REQUEST_URI']);
 		$routes = explode('/', $url[0]);
 		

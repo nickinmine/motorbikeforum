@@ -3,7 +3,7 @@
 class Model_Main extends Model {
 
 	/**
-	 * @throws exception
+	 * @throws Exception
 	 */
 	public function get_data($message = null) {
 		$pdo = Session::get_sql_connection();

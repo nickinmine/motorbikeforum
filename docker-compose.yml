@@ -2,11 +2,11 @@ version: '3'
 
 services:
   web:
-    build: /web
+    build: /php
     ports:
       - 8080:80
     volumes:
-      - ./src:/var/www/html                                                         
+      - ./php/src:/var/www/html                                                         
 
   mysql:
     image: mysql:8.0

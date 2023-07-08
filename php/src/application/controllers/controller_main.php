@@ -13,7 +13,7 @@ class Controller_Main extends Controller {
 	 *   tags={"main"},
 	 *   summary="Главная страница",
 	 *   operationId="auth",
-	 *   description="Страница, позволяющая оператору выполнить авторизацию или выйти из аккаунта.",
+	 *   description="Страница, позволяющая пользователю выполнить авторизацию или выйти из аккаунта.",
 	 *
 	 *   @OA\Response(
 	 *      response=200,

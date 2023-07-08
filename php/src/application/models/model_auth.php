@@ -31,7 +31,6 @@ class Model_Auth extends Model {
             throw new LogicException('Неверный логин или пароль');
         }
         if (password_needs_rehash($user['password'], PASSWORD_DEFAULT)) {
-            Route::addlog('rehash');
             $newHash = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare('UPDATE user SET password = :password WHERE user_uuid = :user_uuid');
             $stmt->execute(array(
