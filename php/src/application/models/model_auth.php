@@ -35,7 +35,7 @@ class Model_Auth extends Model {
             $stmt = $pdo->prepare('UPDATE user SET password = :password WHERE user_uuid = :user_uuid');
             $stmt->execute(array(
                 'password' => $newHash,
-                'user_uuid' => $user['user_uuid'],
+                'user_uuid' => htmlspecialchars($user['user_uuid']),
             ));
         }
 
