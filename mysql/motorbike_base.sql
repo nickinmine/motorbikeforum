@@ -235,7 +235,7 @@ CREATE TABLE `token` (
 
 CREATE TABLE `user` (
   `user_uuid` varchar(36) DEFAULT (UUID()) NOT NULL,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(60) NOT NULL,
   `nickname` varchar(20) NOT NULL,
   `password` varchar(60) NOT NULL,
   `experience` int NOT NULL,
