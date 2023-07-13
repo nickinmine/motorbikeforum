@@ -1,0 +1,457 @@
+body {
+    margin: 0;
+    font-family: "Tahoma", sans-serif;
+    height: 100%;
+    width: 100%;
+
+}
+
+.page {
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(
+            left,
+            rgb(255, 255, 255) 0%,
+            rgb(246, 246, 246) 20%,
+            rgb(179, 179, 179) 80%
+    );
+    background: -webkit-linear-gradient(
+            left,
+            rgb(255, 255, 255) 0%,
+            rgb(246, 246, 246) 20%,
+            rgb(179, 179, 179) 80%
+    );
+    background: linear-gradient(
+            to right,
+            rgb(255, 255, 255) 0%,
+            rgb(246, 246, 246) 20%,
+            rgb(179, 179, 179) 80%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#b3b3b3',GradientType=1 );
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn.oneactive {
+    position: absolute;
+    right: 115px;
+    background-color: pink;
+    display: block;
+    color: #000;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 15px 50px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    text-decoration: none;
+}
+
+.base {
+    padding-top: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.header-lines {
+    display: flex;
+    align-items: center;
+    background: #ffb570;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 1px solid #ae4132;
+    width: 1373px;
+    height: 80px;
+}
+
+.News {
+    padding: 28px 40px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.container-form {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.NEW {
+    background-color: white;
+    display: block;
+    font-size: 20px;
+    width: 240px;
+    padding: 10px;
+    color: #000;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #000;
+    text-decoration: none;
+}
+
+.NEWtopic {
+    background-color: white;
+    display: block;
+    font-size: 20px;
+    width: 165px;
+    padding: 10px;
+    color: #000;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #000;
+    text-decoration: none;
+}
+
+.search {
+    font-size: 20px;
+    width: 230px;
+    padding: 10px;
+    color: #000;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #000;
+}
+
+.btn-main {
+    margin-left: 670px;
+    background-color: white;
+    display: block;
+    font-size: 20px;
+    width: 145px;
+    padding: 10px;
+    color: #000;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #000;
+    text-decoration: none;
+    text-align: right;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn-main-open {
+    outline: none;
+    border: none;
+    margin-left: 825px;
+    background: transparent;
+}
+
+.btn-main-opens {
+    margin-left: 925px;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.btn-main.active {
+    margin-left: 790px;
+    background-color: white;
+    display: block;
+    font-size: 20px;
+    width: 145px;
+    padding: 10px;
+    color: #000;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #000;
+    text-decoration: none;
+    text-align: right;
+}
+
+.btn-main.activevariation {
+    margin-left: 550px;
+    background-color: white;
+    display: block;
+    font-size: 20px;
+    width: 145px;
+    padding: 10px;
+    color: #000;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #000;
+    text-decoration: none;
+    text-align: right;
+}
+
+.btn-main.actives {
+    margin-left: 20px;
+    background-color: white;
+    display: block;
+    font-size: 20px;
+    width: 156px;
+    padding: 10px;
+    color: #000;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #000;
+    text-decoration: none;
+    text-align: right;
+}
+
+.arrow {
+    padding-left: 0;
+    margin-right: 5px;
+}
+
+.ms {
+    padding-top: 30px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #000;
+}
+
+#newsList {
+    padding-top: 30px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.block {
+    padding-bottom: 250px;
+}
+
+.blocks {
+    padding-bottom: 20px;
+}
+
+.proporsals {
+    background: #fff;
+    width: 1373px;
+    border: 1px solid #000000;
+}
+
+.proporsal {
+    padding-left: 50px;
+    background: #fff;
+    width: 1324px;
+    border: 1px solid #000000;
+}
+
+.titlenew {
+    font-size: 25px;
+    font-weight: 600;
+    padding-top: 15px;
+}
+
+.avtor {
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+.photo {
+    display: flex;
+}
+
+.photoone {
+    padding-top: 20px;
+}
+
+.phototwo {
+    padding-top: 20px;
+}
+
+.inf {
+    padding: 10px 50px;
+    display: flex;
+}
+
+.topic {
+    padding-left: 100px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.icons {
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.views {
+    padding-left: 630px;
+    padding-right: 70px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.answer {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.technic {
+    padding-left: 30px;
+}
+
+.oneblock {
+    width: 1280px;
+    border-bottom: 4px solid #000;
+}
+
+.topicname {
+    background-color: #f5f5f5;
+    font-size: 30px;
+    font-weight: 600;
+    display: block;
+    padding: 5px 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 1280px;
+}
+
+.questions {
+    width: 1200px;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    border-bottom: 4px solid #000;
+}
+
+.technic .questions:last-child {
+    border-bottom: none;
+}
+
+.messange {
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 30px;
+}
+
+.number {
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 130px;
+}
+
+.Topic {
+    margin-top: 10px;
+    margin-left: 40px;
+    padding: 10px;
+    width: 1300px;
+    height: 330px;
+    border-bottom: 2px solid #a3a3a3;
+}
+
+.proporsals .Topic:last-child {
+    border-bottom: none;
+}
+
+.topic-name {
+    background: #fff;
+    margin-top: 15px;
+    font-size: 30px;
+    font-weight: 600;
+    border: 1px solid #000;
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin-left: 50px;
+    width: 1280px;
+}
+
+.user {
+    margin-top: 10px;
+    width: 175px;
+    height: 300px;
+    display: flex;
+    border-right: 2px solid #a3a3a3;
+}
+
+.user-info {
+    display: block;
+    padding-right: 20px;
+}
+
+.name {
+    padding-top: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.nick {
+    padding-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.regdata {
+    padding-top: 10px;
+    font-size: 12px;
+}
+
+.moto {
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+.experience {
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+.topic-inf {
+    display: flex;
+}
+
+.infa {
+    padding-left: 15px;
+    display: block;
+}
+
+.topic-namesmall {
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.date {
+    font-size: 15px;
+    padding-bottom: 30px;
+}
+
+.text {
+    width: 1030px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.photos {
+    padding-left: 22px;
+    display: block;
+}
+
+.texts {
+    padding-top: 10px;
+    width: 1300px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.comment {
+    margin-top: 15px;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.com {
+    text-decoration: none;
+    font-size: 16px;
+    padding-left: 20px;
+    color: #000;
+}
+
+.comm {
+    margin-top: 10px;
+    margin-left: 40px;
+    padding: 10px;
+    height: 350px;
+}
+
+.edit {
+    padding-left: 10px;
+}

@@ -40,6 +40,14 @@ class Controller_Forum extends Controller {
 		return null;
 	}*/
 
+    function action_index() {
+        Session::safe_session_start();
+        //$data = $this->model->get_data('hello world');
+        $data = 'hello world';
+        $this->view->generate('view_forum.php', $data);
+        return null;
+    }
+
 	/**
 	 * @OA\Post(
 	 *   path="/forum/create",

@@ -1,0 +1,84 @@
+.Enter-window {
+    display: flex;
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.window {
+    padding: 50px;
+    margin: auto;
+}
+
+.window-text {
+    text-align: center;
+    width: auto;
+    height: auto;
+    background: #ffb570;
+    border-radius: 50px;
+
+}
+
+input[type="submit"] {
+    cursor:pointer;
+}
+
+.Enter {
+    padding-top: 20px;
+    margin: 0;
+    font-weight: 600;
+    color: #000;
+}
+
+.data {
+    padding-top: 20px;
+}
+
+#login, #password {
+    padding: 10px;
+    margin: 0 20px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 420px;
+    color: #000;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #000;
+}
+
+.mes {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+}
+
+.mess, .mess:visited {
+    font-size: 14px;
+    font-weight: 600;
+    color: #003cff;
+    text-decoration: none;
+}
+
+.signin {
+    padding: 20px;
+    width: auto;
+}
+
+.sign {
+    background-color: #b1ddf0;
+    text-decoration: none;
+    color: #000;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #000;
+}
+
+.sign:hover {
+    background-color: #c1fdf0;
+}
