@@ -2,10 +2,10 @@
 
 /**
  * @OA\Schema(
- *     title="Controller_Auth",
+ *     title="Controller_Reg",
  *     description="Контроллер для взаимодействия со страницей регистрации",
  *     @OA\Xml(
- *         name="Controller_Auth"
+ *         name="Controller_Reg"
  *     )
  * )
  */
