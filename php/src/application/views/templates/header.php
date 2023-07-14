@@ -7,7 +7,12 @@
         </div>
         <h1 class="phrase">Учим плохому хорошо</h1>
         <div class="profile">
-            <div class="user-img"><a href="/profile"><img src="../../images/userimg.png" alt=""></a></div>
+            <div class="user-img"><a href="/profile">
+                    <?php
+                        if ($data['nickname'])
+                            echo '<img src="../../images/userimg.png" alt=""></a>';
+                    ?>
+            </div>
             <div class="user-information">
                 <a href="/profile" class="User"><?php echo $data['nickname'] ?></a>
             </div>
