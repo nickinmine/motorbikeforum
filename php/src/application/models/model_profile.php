@@ -10,7 +10,9 @@ class Model_Profile extends Model {
 		);
 		$user_uuid = Session::auth();
 		$pdo = Session::get_sql_connection();
-		$query = "SELECT name, nickname, email, motorbike, experience FROM user WHERE user_uuid = :user_uuid";
+		$query = "SELECT name, nickname, email, motorbike, experience, 
+       		(SELECT min_uri FROM image WHERE image_id = avatar_id) 
+       		AS avatar_uri FROM user WHERE user_uuid = :user_uuid";
 		$stmt = $pdo->prepare($query);
 		$stmt->execute(array('user_uuid' => $user_uuid));
 		$data['user'] = $stmt->fetch();
@@ -43,7 +45,6 @@ class Model_Profile extends Model {
 			}
 		}
 		$pdo = Session::get_sql_connection();
-		Route::addlog(print_r($user, true));
 		// Обновление данных пользователя
 		$stmt = $pdo->prepare("UPDATE user SET name = :name, nickname = :nickname, password = :password, 
             experience = :experience, email = :email, motorbike = :motorbike
@@ -57,7 +58,6 @@ class Model_Profile extends Model {
 			'email' => htmlspecialchars($user['email']),
 			'motorbike' => htmlspecialchars($user['motorbike'])
 		));
-		Route::addlog('++');
 	}
 
 }
