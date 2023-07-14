@@ -22,7 +22,9 @@
                     </div>
                     <div class="take">Выберите фото</div>
                     <label>
-                        <input form="reg" type="number" min="0" max="99" name="experience" id="nameexperience" required="required" placeholder="Стаж"/>
+                        <input form="reg" type="number" min="0" max="99" name="experience" id="nameexperience"
+                            required="required" placeholder="Стаж"
+                        />
                     </label>
                 </div>
                 <form id="reg" class="data" method="POST" enctype="multipart/form-data" action="/reg/signup">
@@ -38,7 +40,8 @@
                     <br>
                     </label>
                     <label>
-                        <input type="password" name="password" id="namepassword" required="required" placeholder="Пароль"/>
+                        <input type="password" name="password" id="namepassword"
+                            required="required" placeholder="Пароль"/>
                     </label>
                     <br>
                     <label>

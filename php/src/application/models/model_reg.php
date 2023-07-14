@@ -24,9 +24,14 @@ class Model_Reg extends Model {
 		if (!array_key_exists('name', $user) ||
 			!array_key_exists('nickname', $user) ||
 			!array_key_exists('password', $user) ||
+			!array_key_exists('password2', $user) ||
 			!array_key_exists('experience', $user ) ||
 			!array_key_exists('email', $user)) {
 			throw new LogicException('Обязательные поля не заполнены');
+		}
+		// Пароль введен и повторен верно
+		if ($user['password'] != $user['password2']) {
+			throw new LogicException('Пароли не совпадают');
 		}
 
 		$pdo = Session::get_sql_connection();

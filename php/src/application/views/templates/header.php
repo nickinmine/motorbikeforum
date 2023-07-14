@@ -7,9 +7,14 @@
         </div>
         <h1 class="phrase">Учим плохому хорошо</h1>
         <div class="profile">
-            <div class="user-img"><a href="/profile"><img src="../../images/userimg.png" alt=""></a></div>
+            <div class="user-img"><a href="/profile">
+                    <?php
+                        if ($data['user']['nickname'])
+                            echo "<img src=", $data['user']['avatar_uri'], " alt=''></a>";
+                    ?>
+            </div>
             <div class="user-information">
-                <a href="/profile" class="User">DocLarsn</a>
+                <a href="/profile" class="User"><?php echo $data['user']['nickname'] ?></a>
             </div>
         </div>
     </div>
