@@ -56,6 +56,11 @@
             </div>
         </div>
     </div>
+    <?php
+        if ($data['message']['reg']) {
+            echo '<div class="mes">' . $data['message']['reg'] . '</div>';
+        }
+    ?>
     <div class="enters-windows">
         <div class="signups">
             <label>

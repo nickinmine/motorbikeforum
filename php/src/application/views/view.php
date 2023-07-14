@@ -7,7 +7,6 @@
     <title>Главная</title>
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/header.css" />
-    <link rel="stylesheet" href="../../css/reg.css" />
 </head>
 <body>
 <div class="page">
