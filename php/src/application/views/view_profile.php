@@ -22,7 +22,10 @@
                     </div>
                     <div class="take">Выберите фото</div>
                     <label>
-                        <input form="reg" type="number" min="0" max="99" name="experience" id="nameexperience" required="required" placeholder="Стаж"/>
+                        <input form="reg" type="number" min="0" max="99" name="experience" id="nameexperience"
+                               required="required" placeholder="Стаж"
+                               value="<?php echo $data['user']['experience'] ?>"
+                        />
                     </label>
                 </div>
                 <form id="reg" class="data" method="POST" enctype="multipart/form-data" action="/reg/signup">
@@ -30,15 +33,20 @@
                         <input name="File" type="file" class="Addfile"/>
                     </label-->
                     <label>
-                        <input type="text" name="name" id="name" required="required" placeholder="ФИО"/>
+                        <input type="text" name="name" id="name" required="required" placeholder="ФИО"
+                            value="<?php echo $data['user']['name'] ?>"
+                        />
                     </label>
                     <br>
                     <label>
-                        <input type="text" name="nickname" id="namelogin" required="required" placeholder="Логин"/>
+                        <input type="text" name="nickname" id="namelogin" required="required" placeholder="Логин"
+                               value="<?php echo $data['user']['nickname'] ?>"
+                        />
                         <br>
                     </label>
                     <label>
-                        <input type="password" name="password" id="namepassword" required="required" placeholder="Пароль"/>
+                        <input type="password" name="password" id="namepassword"
+                               required="required" placeholder="Пароль"/>
                     </label>
                     <br>
                     <label>
@@ -46,11 +54,15 @@
                     </label>
                     <br>
                     <label>
-                        <input type="text" name="email" id="namecontacts" required="required" placeholder="Контакты"/>
+                        <input type="text" name="email" id="namecontacts" required="required" placeholder="Контакты"
+                            value="<?php echo $data['user']['email'] ?>"
+                        />
                     </label>
                     <br>
                     <label>
-                        <input type="text" name="motorbike" id="namemoto" placeholder="Мотоцикл"/>
+                        <input type="text" name="motorbike" id="namemoto" placeholder="Мотоцикл"
+                               value="<?php echo $data['user']['motorbike'] ?>"
+                        />
                     </label>
                 </form>
             </div>
