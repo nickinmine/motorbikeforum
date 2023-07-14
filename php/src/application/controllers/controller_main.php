@@ -30,7 +30,7 @@ class Controller_Main extends Controller {
 	public function action_index() {
 		Session::safe_session_start();
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$data = $this->model->get_data('hello world');
+			$data = $this->model->get_data();
 			unset($_SESSION['mbforum']['message']);
 		}
 		else {

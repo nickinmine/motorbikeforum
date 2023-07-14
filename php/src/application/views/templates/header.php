@@ -14,7 +14,7 @@
                     ?>
             </div>
             <div class="user-information">
-                <a href="/profile" class="User"><?php echo $data['nickname'] ?></a>
+                <a href="/profile" class="User"><?php echo $data['user']['nickname'] ?></a>
             </div>
         </div>
     </div>
