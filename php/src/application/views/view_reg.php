@@ -42,7 +42,7 @@
                     </label>
                     <br>
                     <label>
-                        <input type="password" name="password2" id="namepassword" placeholder="Повторите пароль"/>
+                        <input type="password" name="password2" id="namepassword" required="required" placeholder="Повторите пароль"/>
                     </label>
                     <br>
                     <label>

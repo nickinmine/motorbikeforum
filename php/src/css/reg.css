@@ -22,17 +22,17 @@
 }
 
 .signups {
-    margin-top: 30px;
+    margin: 30px;
 }
 
 .signUp {
     background-color: #b1ddf0;
     text-decoration: none;
     color: #000;
-    padding: 15px 20px;
+    padding: 10px 20px;
     display: block;
-    font-size: 40px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 600;
     border-radius: 10px;
     outline: none;
     border: 1px solid #000;
