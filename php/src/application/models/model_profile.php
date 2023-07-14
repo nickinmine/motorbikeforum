@@ -43,7 +43,6 @@ class Model_Profile extends Model {
 			}
 		}
 		$pdo = Session::get_sql_connection();
-		Route::addlog(print_r($user, true));
 		// Обновление данных пользователя
 		$stmt = $pdo->prepare("UPDATE user SET name = :name, nickname = :nickname, password = :password, 
             experience = :experience, email = :email, motorbike = :motorbike
@@ -57,7 +56,6 @@ class Model_Profile extends Model {
 			'email' => htmlspecialchars($user['email']),
 			'motorbike' => htmlspecialchars($user['motorbike'])
 		));
-		Route::addlog('++');
 	}
 
 }
