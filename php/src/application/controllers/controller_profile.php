@@ -22,7 +22,7 @@ class Controller_Profile extends Controller {
 	 *   path="/profile",
 	 *   tags={"profile"},
 	 *   summary="Страница редактирования профиля",
-	 *   operationId="reg",
+	 *   operationId="profile",
 	 *   description="Страница, позволяющая пользователю выполнить редактирование профиля.",
 	 *
 	 *   @OA\Response(
@@ -46,5 +46,99 @@ class Controller_Profile extends Controller {
         $this->view->generate('view_profile.php', $data);
         return null;
     }
+
+	/**
+	 * @OA\Post(
+	 *   path="/profile/edit",
+	 *   tags={"profile"},
+	 *   summary="Редактирование",
+	 *   operationId="profile_edit",
+	 *   description="Функционал в виде формы, позволяющий пользователю редактировать данные профиля.",
+	 *
+	 *   @OA\Parameter(
+	 *      name="name",
+	 *      in="query",
+	 *      required=true,
+	 *      @OA\Schema(
+	 *           type="string"
+	 *      )
+	 *   ),
+	 *   @OA\Parameter(
+	 *      name="nickname",
+	 *      in="query",
+	 *      required=true,
+	 *      @OA\Schema(
+	 *          type="string"
+	 *      )
+	 *   ),
+	 *   @OA\Parameter(
+	 *      name="experience",
+	 *      in="query",
+	 *      required=true,
+	 *      @OA\Schema(
+	 *          type="number"
+	 *      )
+	 *   ),
+	 *   @OA\Parameter(
+	 *      name="email",
+	 *      in="query",
+	 *      required=true,
+	 *      @OA\Schema(
+	 *          type="string"
+	 *      )
+	 *   ),
+	 *   @OA\Parameter(
+	 *      name="motorbike",
+	 *      in="query",
+	 *      required=false,
+	 *      @OA\Schema(
+	 *          type="string"
+	 *      )
+	 *   ),
+	 *   @OA\Parameter(
+	 *      name="password",
+	 *      in="query",
+	 *      required=true,
+	 *      @OA\Schema(
+	 *          type="string"
+	 *      )
+	 *   ),
+	 *   @OA\Response(
+	 *      response=200,
+	 *      description="Success",
+	 *      @OA\MediaType(
+	 *           mediaType="application/json",
+	 *      )
+	 *   ),
+	 *   @OA\Response(
+	 *      response=400,
+	 *      description="Wrong data format",
+	 *      @OA\MediaType(
+	 *           mediaType="application/json",
+	 *      )
+	 *   )
+	 *)
+	 *
+	 * @return null
+	 * @throws Exception
+	 */
+	function action_signup() {
+		Session::safe_session_start();
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			try {
+				$this->model->registration($_POST);
+				header('Location: /auth');
+			}
+			catch (LogicException $exception) {
+				// Ошибка при редактировании данных
+				$_SESSION['mbforum']['message']['profile'] = $exception->getMessage();
+				header('Location: /reg');
+			}
+		}
+		else {
+			throw new Exception(405);
+		}
+		return null;
+	}
 
 }

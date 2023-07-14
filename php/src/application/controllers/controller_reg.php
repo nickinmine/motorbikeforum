@@ -106,6 +106,14 @@ class Controller_Reg extends Controller {
 	 *          type="string"
 	 *      )
 	 *   ),
+	 *     @OA\Parameter(
+	 *      name="password2",
+	 *      in="query",
+	 *      required=true,
+	 *      @OA\Schema(
+	 *          type="string"
+	 *      )
+	 *   ),
 	 *   @OA\Response(
 	 *      response=200,
 	 *      description="Success",
@@ -133,7 +141,7 @@ class Controller_Reg extends Controller {
 				header('Location: /auth');
 			}
 			catch (LogicException $exception) {
-				// Неверный пароль: вход не выполнен
+				// Ошибка при регистрации
 				$_SESSION['mbforum']['message']['reg'] = $exception->getMessage();
 				header('Location: /reg');
 			}

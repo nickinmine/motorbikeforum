@@ -28,7 +28,7 @@
                         />
                     </label>
                 </div>
-                <form id="reg" class="data" method="POST" enctype="multipart/form-data" action="/reg/signup">
+                <form id="edit" class="data" method="POST" enctype="multipart/form-data" action="/profile/edit">
                     <!--label>
                         <input name="File" type="file" class="Addfile"/>
                     </label-->
@@ -45,8 +45,7 @@
                         <br>
                     </label>
                     <label>
-                        <input type="password" name="password" id="namepassword"
-                               required="required" placeholder="Пароль"/>
+                        <input type="password" name="password" id="namepassword" placeholder="Пароль"/>
                     </label>
                     <br>
                     <label>
@@ -71,7 +70,7 @@
     <div class="enters-windows">
         <div class="signups">
             <label>
-                <input form="reg" class="signUp" type="submit" value="Применить">
+                <input form="edit" class="signUp" type="submit" value="Применить">
             </label>
         </div>
     </div>

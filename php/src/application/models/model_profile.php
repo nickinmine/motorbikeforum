@@ -31,19 +31,28 @@ class Model_Profile extends Model {
 		// Проверка заполненности обязательных полей
 		if (!array_key_exists('name', $user) ||
 			!array_key_exists('nickname', $user) ||
-			!array_key_exists('password', $user) ||
 			!array_key_exists('experience', $user ) ||
 			!array_key_exists('email', $user)) {
 			throw new LogicException('Обязательные поля не заполнены');
 		}
+		// Пароль введен и повторен верно
+		if (array_key_exists('password', $user) ||
+			array_key_exists('password2', $user)) {
+			if (array_key_exists('password', $user) &&
+				array_key_exists('password2', $user) &&
+				$user['password'] != $user['password2']) {
+				throw new LogicException('Пароли не совпадают');
+			}
+		}
 
 		$pdo = Session::get_sql_connection();
-		$pdo->beginTransaction();
 
-		// Добавление пользователя в таблицу пользователей
-		$stmt = $pdo->prepare("INSERT INTO user (name, nickname, password, experience, email, motorbike) 
-			VALUES (:name, :nickname, :password, :experience, :email, :motorbike)");
+		// Обновление данных пользователя
+		$stmt = $pdo->prepare("UPDATE user SET name = :name, nickname = :nickname, password = :password, 
+            experience = :experience, email = :email, motorbike = :motorbike)
+            WHERE user_uuid = :user_uuid");
 		$stmt->execute(array(
+			'user_uuid' => Session::auth(),
 			'name' => htmlspecialchars($user['name']),
 			'nickname' => htmlspecialchars($user['nickname']),
 			'password' => password_hash($user['password'], PASSWORD_DEFAULT),
@@ -51,12 +60,6 @@ class Model_Profile extends Model {
 			'email' => htmlspecialchars($user['email']),
 			'motorbike' => htmlspecialchars($user['motorbike'])
 		));
-
-		// Добавление пользователя в лист ожидания
-		$stmt = $pdo->prepare("INSERT INTO wait_list (SELECT user_uuid FROM user WHERE nickname = :nickname)");
-		$stmt->execute(array('nickname' => htmlspecialchars($user['nickname'])));
-
-		$pdo->commit();
 	}
 
 }
