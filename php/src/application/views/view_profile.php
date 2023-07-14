@@ -22,7 +22,7 @@
                     </div>
                     <div class="take">Выберите фото</div>
                     <label>
-                        <input form="reg" type="number" min="0" max="99" name="experience" id="nameexperience"
+                        <input form="edit" type="number" min="0" max="99" name="experience" id="nameexperience"
                                required="required" placeholder="Стаж"
                                value="<?php echo $data['user']['experience'] ?>"
                         />

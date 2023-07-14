@@ -122,18 +122,18 @@ class Controller_Profile extends Controller {
 	 * @return null
 	 * @throws Exception
 	 */
-	function action_signup() {
+	function action_edit() {
 		Session::safe_session_start();
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			try {
-				$this->model->registration($_POST);
-				header('Location: /auth');
+				$this->model->edit_profile($_POST);
 			}
 			catch (LogicException $exception) {
 				// Ошибка при редактировании данных
 				$_SESSION['mbforum']['message']['profile'] = $exception->getMessage();
-				header('Location: /reg');
+
 			}
+			header('Location: /profile');
 		}
 		else {
 			throw new Exception(405);
