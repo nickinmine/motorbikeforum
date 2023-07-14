@@ -14,7 +14,6 @@ class Model_Profile extends Model {
 		$stmt = $pdo->prepare($query);
 		$stmt->execute(array('user_uuid' => $user_uuid));
 		$data['user'] = $stmt->fetch();
-		Route::addlog($data['user']['experience']);
 		return $data;
 	}
 
@@ -25,13 +24,12 @@ class Model_Profile extends Model {
 	 */
 	public function edit_profile($user) {
 		// Удаление пустых полей пользователя
-		foreach ($user as $key => $value) {
+		/*foreach ($user as $key => $value) {
 			if ($value == '') unset($user[$key]);
-		}
+		}*/
 		// Проверка заполненности обязательных полей
 		if (!array_key_exists('name', $user) ||
 			!array_key_exists('nickname', $user) ||
-			!array_key_exists('experience', $user ) ||
 			!array_key_exists('email', $user)) {
 			throw new LogicException('Обязательные поля не заполнены');
 		}
@@ -44,12 +42,11 @@ class Model_Profile extends Model {
 				throw new LogicException('Пароли не совпадают');
 			}
 		}
-
 		$pdo = Session::get_sql_connection();
-
+		Route::addlog(print_r($user, true));
 		// Обновление данных пользователя
 		$stmt = $pdo->prepare("UPDATE user SET name = :name, nickname = :nickname, password = :password, 
-            experience = :experience, email = :email, motorbike = :motorbike)
+            experience = :experience, email = :email, motorbike = :motorbike
             WHERE user_uuid = :user_uuid");
 		$stmt->execute(array(
 			'user_uuid' => Session::auth(),
@@ -60,6 +57,7 @@ class Model_Profile extends Model {
 			'email' => htmlspecialchars($user['email']),
 			'motorbike' => htmlspecialchars($user['motorbike'])
 		));
+		Route::addlog('++');
 	}
 
 }

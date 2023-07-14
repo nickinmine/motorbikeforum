@@ -1,29 +1,49 @@
-2023-05-24 16:56:51 ++
-2023-05-24 16:56:51 a6834f691243bb6f43a97c4466d2daf7bd161f5f
-2023-05-24 16:58:15 ++
-2023-05-24 16:58:15 852801feee1fb4fb7df940b4d6bc6fbff8e9dc02
-2023-05-24 16:59:46 ++
-2023-05-24 16:59:46 72db942b1e16e83fa5a100918aa6bbba
-2023-05-24 17:00:59 ++
-2023-05-24 17:00:59 4f4d4438e2b010ba3dd55516df182352
-2023-05-29 12:57:39 Array
+2023-07-14 22:33:37 Array
 (
-    [user_uuid] => e4e2447f-fe06-11ed-9b7a-0242ac150002
-    [password] => $2y$10$tPhP1kpkF9tRhjFlQYo5IOJI.8ohkLcBd6S77au2pS45C7axW2Zbu
+    [experience] => 1
+    [name] => root1
+    [nickname] => root
+    [password] => 
+    [password2] => 
+    [email] => noemail@email.net
+    [motorbike] => 
 )
 
-2023-05-29 12:58:46 +++
-2023-05-29 12:59:06 +++
-2023-05-29 12:59:33 +++
-2023-05-29 13:00:17 61cd3afd6615922d8f87d38255d509d0
-2023-05-29 13:02:46 61cd3afd6615922d8f87d38255d509d0
-2023-07-14 19:47:50 +++
-2023-07-14 19:48:11 root
-2023-07-14 19:48:18 root
-2023-07-14 19:48:32 root
-2023-07-14 19:48:34 root
-2023-07-14 20:49:37 root
-2023-07-14 20:50:03 noemail@email.net
-2023-07-14 20:50:15 
-2023-07-14 20:50:33 
-2023-07-14 20:51:05 1
+2023-07-14 22:35:05 Array
+(
+    [experience] => 1
+    [name] => root1
+    [nickname] => root
+    [password] => 
+    [password2] => 
+    [email] => noemail@email.net
+    [motorbike] => 
+)
+
+2023-07-14 22:35:05 SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+            WHERE user_uuid = ?' at line 2
+2023-07-14 22:35:05 ++
+2023-07-14 22:35:47 Array
+(
+    [experience] => 1
+    [name] => root1
+    [nickname] => root
+    [password] => 
+    [password2] => 
+    [email] => noemail@email.net
+    [motorbike] => 
+)
+
+2023-07-14 22:35:47 ++
+2023-07-14 22:35:53 Array
+(
+    [experience] => 2
+    [name] => root1
+    [nickname] => root
+    [password] => 
+    [password2] => 
+    [email] => noemail@email.net
+    [motorbike] => 
+)
+
+2023-07-14 22:35:53 ++
