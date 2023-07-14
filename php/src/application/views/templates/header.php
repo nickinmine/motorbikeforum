@@ -9,7 +9,7 @@
         <div class="profile">
             <div class="user-img"><a href="/profile">
                     <?php
-                        if ($data['nickname'])
+                        if ($data['user']['nickname'])
                             echo '<img src="../../images/userimg.png" alt=""></a>';
                     ?>
             </div>
