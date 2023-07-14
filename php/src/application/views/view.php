@@ -13,7 +13,7 @@
 <div class="page">
     <?php include_once "templates/header.php"?>
     <div>
-        
+
     </div>
 </div>
 </body>
