@@ -10,7 +10,9 @@ class Model_Profile extends Model {
 		);
 		$user_uuid = Session::auth();
 		$pdo = Session::get_sql_connection();
-		$query = "SELECT name, nickname, email, motorbike, experience FROM user WHERE user_uuid = :user_uuid";
+		$query = "SELECT name, nickname, email, motorbike, experience, 
+       		(SELECT min_uri FROM image WHERE image_id = avatar_id) 
+       		AS avatar_uri FROM user WHERE user_uuid = :user_uuid";
 		$stmt = $pdo->prepare($query);
 		$stmt->execute(array('user_uuid' => $user_uuid));
 		$data['user'] = $stmt->fetch();
