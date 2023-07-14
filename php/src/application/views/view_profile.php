@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Регистрация</title>
+    <title>Профиль</title>
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/header.css" />
     <link rel="stylesheet" href="../../css/reg.css" />
@@ -13,7 +13,7 @@
 <div class="page">
     <?php include_once "templates/header.php"?>
     <div class="Enters-window">
-        <h1>Регистрация</h1>
+        <h1>Редактирование профиля</h1>
         <div class="window">
             <div class="signup-window">
                 <div class="addfile">
@@ -35,7 +35,7 @@
                     <br>
                     <label>
                         <input type="text" name="nickname" id="namelogin" required="required" placeholder="Логин"/>
-                    <br>
+                        <br>
                     </label>
                     <label>
                         <input type="password" name="password" id="namepassword" required="required" placeholder="Пароль"/>
@@ -59,7 +59,7 @@
     <div class="enters-windows">
         <div class="signups">
             <label>
-                <input form="reg" class="signUp" type="submit" value="Зарегистрироваться">
+                <input form="reg" class="signUp" type="submit" value="Применить">
             </label>
         </div>
     </div>
