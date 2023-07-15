@@ -46,13 +46,13 @@ body {
 }
 
 .base {
-    padding-top: 15px;
+    padding-top: 2em;
+    padding-bottom: 1em;
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: center;
     overflow: hidden;
-    margin: 1em;
 }
 
 .container {
@@ -253,7 +253,7 @@ body {
 
 .proporsals {
     background: #fff;
-    width: 1373px;
+    width: auto;
     border: 1px solid #000000;
 }
 
@@ -287,15 +287,23 @@ body {
     padding-top: 20px;
 }
 
+.topics {
+    margin: 0 10px 10px;
+    border-collapse: inherit;
+}
+
 .inf {
     padding: 10px 50px;
     display: flex;
+    white-space: nowrap;
 }
 
 .topic {
-    padding-left: 100px;
-    font-size: 20px;
+    padding: 5px;
+    width: 65%;
+    font-size: 14px;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .icons {
@@ -305,15 +313,24 @@ body {
 }
 
 .views {
-    padding-left: 630px;
-    padding-right: 70px;
-    font-size: 20px;
+    padding: 5px;
+    width: 10%;
+    font-size: 14px;
     font-weight: 600;
+    white-space: nowrap;
+}
+
+.views-count {
+    text-align: center;
+    vertical-align: center;
 }
 
 .answer {
-    font-size: 20px;
+    padding: 5px;
+    width: 25%;
+    font-size: 14px;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .technic {
@@ -326,22 +343,24 @@ body {
 }
 
 .topicname {
+
     background-color: #f5f5f5;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 600;
-    display: block;
-    padding: 5px 15px;
+    padding: 5px 10px;
     border: 1px solid #000;
     border-radius: 5px;
-    width: 1280px;
 }
 
 .questions {
-    width: 1200px;
+    width: auto;
     padding: 10px 40px;
-    display: flex;
     align-items: center;
-    border-bottom: 4px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+.thread td {
+    border-bottom: 2px solid #000;
 }
 
 .technic .questions:last-child {
